@@ -3,12 +3,7 @@ package game003.marubatu;
 public class Board {
   private char[][] board;// ”Õ–Ê
   public Board() {
-    board = new char[3][3];
-    for(int x = 0; x<board.length;x++) {
-      for(int y = 0;y<board[0].length;y++ ) {
-        board[x][y]=' ';
-      }
-    }
+    this(' ');
   }
 
   public Board(char initMark) {
