@@ -9,20 +9,23 @@ public class Game {
   private final int turn_x = 2;//xのターン
   private final int turn_draw = 3;//引き分けのターン
 
-  private int x, y;// 盤の座標
   private int stat = 1;// ターンの状態(先手o1、後手xー1）
   private int turn = 1;//ターン
   int winner = turn_draw;//1 oの勝ち, 2 xの勝ち, 3 まだ
   Board board = new Board();
 
-  public int play() {
+  public void start(){
+
+  }
+
+  public int play(){
 
     System.out.println("ターン" + turn + "：打つマスを0,1,2を使って入力してください。数字の間には空白を入れてください。[y x]");
     try {
       @SuppressWarnings("resource")
       Scanner scn = new Scanner(System.in); // 入力
-      x = scn.nextInt();
-      y = scn.nextInt();
+      int x = scn.nextInt();
+      int y = scn.nextInt();
       
       while (!board.markSlot(x, y, stat)) {
         System.out.println("もう一度");
