@@ -1,7 +1,7 @@
 package game003.marubatu;
 
 public class Board {
-  char[][] board;// ”Õ–Ê
+  private char[][] board;// ”Õ–Ê
   public Board() {
     board = new char[3][3];
     for(int x = 0; x<board.length;x++) {
@@ -45,4 +45,14 @@ public class Board {
     board[x][y] = mark;
     return true;
   }
+
+  public char getMark(int x, int y){
+    if (x < 0 ||board.length <= x)throw new IllegalArgumentException();
+    if (y < 0 || board[0].length <= y)throw new IllegalArgumentException();
+
+    return board[x][y];
+  }
+
+
+
 }

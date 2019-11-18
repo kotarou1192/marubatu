@@ -5,15 +5,15 @@ import java.util.Scanner;
 
 public class Main {
 
-  private final int draw = 3;
-  private final int win_o = 1;
-  private final int win_x = 2;
+  private final int Draw = 3;
+  private final int Win_o = 1;
+  private final int Win_x = 2;
 
 
   public static void main(String[] args) {
     
-    Main playgame = new Main();
-    playgame.start();
+    Main playGame = new Main();
+    playGame.start();
   }
 
   public void start() {
@@ -25,13 +25,13 @@ public class Main {
     if (Objects.equals(gameStart,"y")) { // ƒQ[ƒ€ŠJn
       Game game = new Game();
       game.board.printBoard();
-      while (game.winner == draw) {
+      while (game.winner == Draw) {
         game.play();
       }
       
-      if(game.winner == win_o) {//Ÿ”s•\¦
+      if(game.winner == Win_o) {//Ÿ”s•\¦
         System.out.println("o‚ÌŸ‚¿");
-      }else if(game.winner == win_x) {
+      }else if(game.winner == Win_x) {
         System.out.println("x‚ÌŸ‚¿");
       }
       
