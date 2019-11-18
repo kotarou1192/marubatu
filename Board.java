@@ -23,26 +23,16 @@ public class Board {
 
   }
 
-  public boolean markSlot(int x, int y, int turn) {// マスに入力
+  public boolean markSlot(int x, int y, char mark) {// マスに入力
 
     if (x < 0 ||board.length <= x)
       return false;
     if (y < 0 || board[0].length <= y)
       return false;
-    if (turn != 1 && turn != -1)
-      return false;
-    if (board[x][y] != ' ')
-      return false;
-
-    char mark;
-    if (turn == 1)
-      mark = 'o';
-    else
-      mark = 'x';
-
-    // mark = turn==1 ? 'o' : 'x';
 
     board[x][y] = mark;
+    // mark = turn==1 ? 'o' : 'x';
+
     return true;
   }
 
