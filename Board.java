@@ -10,6 +10,15 @@ public class Board {
       }
     }
   }
+
+  public Board(char initMark) {
+    board = new char[3][3];
+    for(int x = 0; x<board.length;x++) {
+      for(int y = 0;y<board[0].length;y++ ) {
+        board[x][y] = initMark;
+      }
+    }
+  }
   
   public void printBoard() {// ”Õ–Ê‚ğo—Í
     System.out.println(" 0 1 2  ");
@@ -31,8 +40,6 @@ public class Board {
       return false;
 
     board[x][y] = mark;
-    // mark = turn==1 ? 'o' : 'x';
-
     return true;
   }
 
