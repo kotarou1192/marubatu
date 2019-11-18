@@ -1,9 +1,14 @@
-package game003;
+package game003.marubatu;
 
 import java.util.Objects;
 import java.util.Scanner;
 
 public class Main {
+
+  private final int draw = 3;
+  private final int win_o = 1;
+  private final int win_x = 2;
+
 
   public static void main(String[] args) {
     
@@ -15,24 +20,24 @@ public class Main {
     
     System.out.println("ゲームをはじめますか：[y/n]");
     Scanner txt1 = new Scanner(System.in); // 入力
-    String gamestart = txt1.nextLine(); // 入力を変数に代入
+    String gameStart = txt1.nextLine(); // 入力を変数に代入
 
-    if (Objects.equals(gamestart,"y")) { // ゲーム開始
+    if (Objects.equals(gameStart,"y")) { // ゲーム開始
       Game game = new Game();
       game.board.printBoard();
-      while (game.winner == 3) {
+      while (game.winner == draw) {
         game.play();
       }
       
-      if(game.winner == 1) {//勝敗表示
+      if(game.winner == win_o) {//勝敗表示
         System.out.println("oの勝ち");
-      }else if(game.winner == 2) {
+      }else if(game.winner == win_x) {
         System.out.println("xの勝ち");
       }
       
       txt1.close();
       
-    } else if (Objects.equals(gamestart,"n")) { // ゲーム終了
+    } else if (Objects.equals(gameStart,"n")) { // ゲーム終了
       System.out.println("end");
       System.exit(0);
       
