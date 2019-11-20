@@ -5,30 +5,30 @@ import java.util.Scanner;
 
 public class Main {
 
-  public static void main(String[] args) {
-    
-    Main playGame = new Main();
-    System.out.println("ゲームをはじめますか：[y/n]");
-    while(!playGame.start());
-  }
+    public static void main(String[] args) {
 
-  public boolean start() {
-    Scanner text = new Scanner(System.in); // 入力
-    String gameStart = text.nextLine(); // 入力を変数に代入
-
-    if (Objects.equals(gameStart,"y")) { // ゲーム開始
-      Game game = new Game();
-      game.board.printBoard();
-      game.start();
-      return true;
-      
-    } else if (Objects.equals(gameStart,"n")) { // ゲーム終了
-      System.out.println("end");
-      return true;
-      
-    } else { // 0か1以外が入力されたので終了
-      System.out.println("yかnで入力してください");
-      return false;
+        Main playGame = new Main();
+        System.out.println("ゲームをはじめますか：[y/n]");
+        while (!playGame.start()) ;
     }
-  }
+
+    public boolean start() {
+        Scanner text = new Scanner(System.in); // 入力
+        String gameStart = text.nextLine(); // 入力を変数に代入
+
+        if (Objects.equals(gameStart, "y")) { // ゲーム開始
+            Game game = new Game();
+            game.board.printBoard();
+            game.start();
+            return true;
+
+        } else if (Objects.equals(gameStart, "n")) { // ゲーム終了
+            System.out.println("end");
+            return true;
+
+        } else { // 0か1以外が入力されたので終了
+            System.out.println("yかnで入力してください");
+            return false;
+        }
+    }
 }

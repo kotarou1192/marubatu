@@ -1,10 +1,9 @@
 package game003.marubatu;
 
 public class Board {
-    private char[][] board;// 盤面
     private final char DEFAULT_MARK;
+    private char[][] board;// 盤面
     private char winnerMark;
-
 
 
     public Board() {
@@ -50,14 +49,12 @@ public class Board {
 
         return board[x][y];
     }
-    public boolean referee(){//勝者がいればtrueいなければfalse
-        if(winnerMark == DEFAULT_MARK){
-            return false;
-        }else{
-            return true;
-        }
+
+    public boolean referee() {//勝者がいればtrueいなければfalse
+        return winnerMark != DEFAULT_MARK;
     }
-    public char whoWin(){//judgeした後に勝者がいればマークを、いなければデフォルトマークを返す
+
+    public char whoWin() {//judgeした後に勝者がいればマークを、いなければデフォルトマークを返す
         return winnerMark;
     }
 
@@ -94,6 +91,4 @@ public class Board {
         winnerMark = DEFAULT_MARK;
         return this;
     }
-
-
 }
