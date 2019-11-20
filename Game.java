@@ -52,7 +52,7 @@ public class Game {
       return false;
     }
   }
-  public int nextPlayer(int currentPlayer) {
+  private int nextPlayer(int currentPlayer) {
     return -currentPlayer;
   }
 
