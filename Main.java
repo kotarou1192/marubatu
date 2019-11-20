@@ -5,11 +5,6 @@ import java.util.Scanner;
 
 public class Main {
 
-  private final int Draw = 3;
-  private final int Win_o = 1;
-  private final int Win_x = 2;
-
-
   public static void main(String[] args) {
     
     Main playGame = new Main();
