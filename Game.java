@@ -19,7 +19,7 @@ public class Game {
     }while(!play());
   }
 
-  public boolean play() {//1ターン進め、ゲームが終わればtrue、続行ならfalse
+  private boolean play() {//1ターン進め、ゲームが終わればtrue、続行ならfalse
     try {
       @SuppressWarnings("resource")
       Scanner scn = new Scanner(System.in); // 入力
