@@ -13,37 +13,27 @@ public class Main {
   public static void main(String[] args) {
     
     Main playGame = new Main();
-    playGame.start();
+    System.out.println("ゲームをはじめますか：[y/n]");
+    while(!playGame.start());
   }
 
-  public void start() {
-    
-    System.out.println("ゲームをはじめますか：[y/n]");
-    Scanner txt1 = new Scanner(System.in); // 入力
-    String gameStart = txt1.nextLine(); // 入力を変数に代入
+  public boolean start() {
+    Scanner text = new Scanner(System.in); // 入力
+    String gameStart = text.nextLine(); // 入力を変数に代入
 
     if (Objects.equals(gameStart,"y")) { // ゲーム開始
       Game game = new Game();
       game.board.printBoard();
-      while (game.winner == Draw) {
-        game.play();
-      }
-      
-      if(game.winner == Win_o) {//勝敗表示
-        System.out.println("oの勝ち");
-      }else if(game.winner == Win_x) {
-        System.out.println("xの勝ち");
-      }
-      
-      txt1.close();
+      game.start();
+      return true;
       
     } else if (Objects.equals(gameStart,"n")) { // ゲーム終了
       System.out.println("end");
-      System.exit(0);
+      return true;
       
     } else { // 0か1以外が入力されたので終了
       System.out.println("yかnで入力してください");
-      System.exit(0);
+      return false;
     }
   }
 }
