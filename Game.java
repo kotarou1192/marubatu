@@ -14,18 +14,17 @@ public class Game {
     private int turn = 1;//ターン
 
     public void start() {
-        do {
-            System.out.println("ターン" + turn + "：打つマスを0,1,2を使って入力してください。数字の間には空白を入れてください。[y x]");
-        } while (!play());
+        while (!play());
     }
 
     private boolean play() {//1ターン進め、ゲームが終わればtrue、続行ならfalse
         TurnResult result = board.judge();
-        if(turn == 10){
+        if(result.isDraw()){
             System.out.println("引き分け");
             return true;
         }
         try {
+            System.out.println("ターン" + turn + "：打つマスを0,1,2を使って入力してください。数字の間には空白を入れてください。[y x]");
             @SuppressWarnings("resource")
             Scanner scn = new Scanner(System.in); // 入力
             int x = scn.nextInt();
