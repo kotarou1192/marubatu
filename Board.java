@@ -1,9 +1,11 @@
 package game003.marubatu;
 
+import java.util.Objects;
+
 public class Board {
     private final char DEFAULT_MARK;
     private char[][] board;// 盤面
-    private char winnerMark;
+    private final char[][] BLANK_BOARD;
 
 
     public Board() {
@@ -12,10 +14,12 @@ public class Board {
 
     public Board(char initMark) {
         board = new char[3][3];
+        BLANK_BOARD = new char[3][3];
         DEFAULT_MARK = initMark;
         for (int x = 0; x < board.length; x++) {
             for (int y = 0; y < board[0].length; y++) {
                 board[x][y] = DEFAULT_MARK;
+                BLANK_BOARD[x][y] = DEFAULT_MARK;
             }
         }
     }
@@ -50,45 +54,31 @@ public class Board {
         return board[x][y];
     }
 
-    public boolean referee() {//勝者がいればtrueいなければfalse
-        return winnerMark != DEFAULT_MARK;
-    }
-
-    public char whoWin() {//judgeした後に勝者がいればマークを、いなければデフォルトマークを返す
-        return winnerMark;
-    }
-
-
-    Board judge() {
+    public TurnResult judge() {
 
         // 縦の判定
         for (int x = 0; x < board.length; x++) {
-            if (board[x][0] != DEFAULT_MARK & board[x][0] == board[x][1] & board[x][1] == board[x][2]) {
-                winnerMark = board[x][2];
-                return this;
+            if (board[x][0] != DEFAULT_MARK && board[x][0] == board[x][1] && board[x][1] == board[x][2]) {
+                return TurnResult.resultWitchWinner(board[x][2]);
             }
         }
 
         // 横の判定
         for (int y = 0; y < board[0].length; y++) {
-            if (board[0][y] != DEFAULT_MARK & board[0][y] == board[1][y] & board[1][y] == board[2][y]) {
-                winnerMark = board[2][y];
-                return this;
+            if (board[0][y] != DEFAULT_MARK && board[0][y] == board[1][y] && board[1][y] == board[2][y]) {
+                return TurnResult.resultWitchWinner(board[2][y]);
             }
         }
 
         // 斜めの判定
-        if (board[0][0] != DEFAULT_MARK & board[0][0] == board[1][1] & board[1][1] == board[2][2]) {
-            winnerMark = board[1][1];
-            return this;
+        if (board[0][0] != DEFAULT_MARK && board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+            return TurnResult.resultWitchWinner(board[1][1]);
         }
 
         // 斜めの判定その2
-        if (board[0][2] != DEFAULT_MARK & board[0][2] == board[1][1] & board[1][1] == board[2][0]) {
-            winnerMark = board[1][1];
-            return this;
+        if (board[0][2] != DEFAULT_MARK && board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+            return TurnResult.resultWitchWinner(board[1][1]);
         }
-        winnerMark = DEFAULT_MARK;
-        return this;
+        return TurnResult.resultNotFinished();
     }
 }

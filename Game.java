@@ -20,6 +20,11 @@ public class Game {
     }
 
     private boolean play() {//1ターン進め、ゲームが終わればtrue、続行ならfalse
+        TurnResult result = board.judge();
+        if(turn == 10){
+            System.out.println("引き分け");
+            return true;
+        }
         try {
             @SuppressWarnings("resource")
             Scanner scn = new Scanner(System.in); // 入力
@@ -37,14 +42,14 @@ public class Game {
                 x = scn.nextInt();
                 y = scn.nextInt();
             }
-            if (!board.judge().referee()) {
+            if (!result.isFinished()) {
                 currentTurn = nextPlayer(currentTurn);
                 turn++;
                 board.printBoard();
                 return false;
             } else {
                 board.printBoard();
-                System.out.println("勝者は" + board.judge().whoWin());
+                System.out.println("勝者は" + result.getMarkOfWinner());
                 return true;
             }
         } catch (InputMismatchException e) {
