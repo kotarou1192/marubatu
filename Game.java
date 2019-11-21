@@ -5,9 +5,9 @@ import java.util.Scanner;
 
 public class Game {
 
-    private final int Turn_O = 1;//oのターン
-    private final char Player1_Mark = 'o';
-    private final char Player2_Mark = 'x';
+    private final int TURN_O = 1;//oのターン
+    private final char PLAYER1_MARK = 'o';
+    private final char PLAYER2_MARK = 'x';
     Board board = new Board();
     private int currentTurn = 1;// 現在のターン(先手o 1、後手x ー1）
     private char mark;
@@ -30,10 +30,10 @@ public class Game {
             int x = scn.nextInt();
             int y = scn.nextInt();
 
-            if (currentTurn == Turn_O) {
-                mark = Player1_Mark;
+            if (currentTurn == TURN_O) {
+                mark = PLAYER1_MARK;
             } else {
-                mark = Player2_Mark;
+                mark = PLAYER2_MARK;
             }
             while (!board.markSlot(x, y, mark)) {
                 System.out.println("もう一度");
