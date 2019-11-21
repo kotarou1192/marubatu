@@ -18,11 +18,6 @@ public class Game {
     }
 
     private boolean play() {//1ターン進め、ゲームが終わればtrue、続行ならfalse
-        TurnResult result = board.judge();
-        if(result.isDraw()){
-            System.out.println("引き分け");
-            return true;
-        }
         try {
             System.out.println("ターン" + turn + "：打つマスを0,1,2を使って入力してください。数字の間には空白を入れてください。[y x]");
             @SuppressWarnings("resource")
@@ -41,11 +36,16 @@ public class Game {
                 x = scn.nextInt();
                 y = scn.nextInt();
             }
+            TurnResult result = board.judge();
             if (!result.isFinished()) {
                 currentTurn = nextPlayer(currentTurn);
                 turn++;
                 board.printBoard();
                 return false;
+            } else if(result.isDraw()) {
+                board.printBoard();
+                System.out.println("引き分け");
+                return true;
             } else {
                 board.printBoard();
                 System.out.println("勝者は" + result.getMarkOfWinner());
